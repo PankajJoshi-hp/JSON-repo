@@ -1,20 +1,17 @@
-const jsonData = `{
-    "students": [
-      { "firstname": "John", "lastname": "Doe", "dob": "1990-05-15" },
-      { "firstname": "Jane", "lastname": "Smith", "dob": "1992-08-25" }
-    ],
-    "teachers": [
-      { "firstname": "Alice", "lastname": "Brown", "dob": "1985-02-12" },
-      { "firstname": "Bob", "lastname": "Johnson", "dob": "1988-11-19" }
-    ]
-  }`;
+const jsonData = {
+  students: [
+    { firstname: "John", lastname: "Doe", dob: "1990-05-15" },
+    { firstname: "Jane", lastname: "Smith", dob: "1992-08-25" },
+  ],
+  teachers: [
+    { firstname: "Alice", lastname: "Brown", dob: "1985-02-12" },
+    { firstname: "Bob", lastname: "Johnson", dob: "1988-11-19" },
+  ],
+};
 
-// Parse the JSON string into an object
-const data = JSON.parse(jsonData);
-
-Object.keys(data).forEach((category) => {
+Object.keys(jsonData).forEach((category) => {
   const heading = document.createElement("h2");
-  //   heading.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+  heading.textContent = category.charAt(0).toUpperCase() + category.slice(1);
   document.body.appendChild(heading);
 
   const table = document.createElement("table");
@@ -34,7 +31,7 @@ Object.keys(data).forEach((category) => {
   });
   table.appendChild(headerRow);
 
-  data[category].forEach((person) => {
+  jsonData[category].forEach((person) => {
     const row = document.createElement("tr");
     Object.values(person).forEach((value) => {
       const td = document.createElement("td");
